@@ -26,19 +26,25 @@ class AlienInvasion:
     def run_game(self):
         """Запуск основного цикла игры."""
         while True:
-            # Отслеживаем события клавиатуры и мыши
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    sys.exit()
+            # Отслеживаем события клавиатуры и мыши через метод _check_events
+            self._check_events()
+            self._update_screen()
             
-            # При каждом проходе цикла перерисовывается экран.
-            self.screen.fill(self.settings.bg_color)
-            
-            # Отрисовка корабля.
-            self.ship.blitme()
-                    
-            # Отображение последнего прорисованного экрана.
-            pygame.display.flip()
+    def _check_events(self):
+        """Обрабатывает нажатие клавиш и события мыши.""" 
+        # Отслеживаем события клавиатуры и мыши
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit()
+    
+    def _update_screen(self):
+        """Обновляет изображения на экране и отображает новый экран."""
+        # При каждом проходе цикла перерисовывается экран.
+        self.screen.fill(self.settings.bg_color)
+        # Отрисовка корабля.
+        self.ship.blitme()       
+        # Отображение последнего прорисованного экрана.
+        pygame.display.flip()
             
             
 if __name__ == '__main__':
