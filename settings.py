@@ -7,3 +7,6 @@ class Settings():
         self.screen_height = 720
         # self.bg_color = (230, 230, 230)
         self.bg_color = (37, 40, 80)
+        
+        # Настройки корабля
+        self.ship_speed = 1.5
