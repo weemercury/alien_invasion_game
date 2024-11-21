@@ -50,6 +50,8 @@ class AlienInvasion:
         elif event.key == pygame.K_LEFT:
             # переместить корабль влево
             self.ship.moving_left = True
+        elif event.key == pygame.K_q:
+            sys.exit()
     
     def _check_keyup_events(self, event):
         """Реагирует на отпускание клавиш."""
