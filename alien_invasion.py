@@ -112,6 +112,10 @@ class AlienInvasion:
         self._check_fleet_edges()
         self.aliens.update()
         
+        # Проверка коллизии "пришелец - корабль."
+        if pygame.sprite.spritecollideany(self.ship, self.aliens):
+            print("Ship hit!!!")
+        
     def _create_fleet(self):
         """Создание флота пришельцев."""
         # Создание пришельца и вычисление кол-ва пришельцев в ряду.
