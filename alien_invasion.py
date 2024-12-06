@@ -204,7 +204,7 @@ class AlienInvasion:
         
         """Определяет кол-во рядов, помещающихся на экране."""
         ship_height = self.ship.rect.height
-        available_space_y = (self.settings.screen_height - (10 * alien_height) - ship_height)
+        available_space_y = (self.settings.screen_height - (12 * alien_height) - ship_height)
         number_rows = available_space_y // (2 * alien_height)
         
         # Создание флота вторжения.
@@ -222,7 +222,7 @@ class AlienInvasion:
         alien_width, alien_height = alien.rect.size
         alien.x = alien_width + 2 * alien_width * alien_number
         alien.rect.x = alien.x
-        alien.y = alien_height + 2 * alien_height * row_number
+        alien.y = 2 * alien_height + 2 * alien_height * row_number
         alien.rect.y = alien.y
         self.aliens.add(alien)
         
