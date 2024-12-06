@@ -76,10 +76,11 @@ class AlienInvasion:
         """Запускает новую игру при нажатии кнопки Play."""
         button_clicked = self.play_button.rect.collidepoint(mouse_pos)
         if button_clicked and not self.stats.game_active:
-            # Сброс игровых настроек.
+            # Сброс игровых настроек и статистики.
             self.settings._initialize_dynamic_settings()
             self.stats.reset_stats()
             self.stats.game_active = True
+            self.sb.prep_score()
             
             # Очистка списков пришельцев и снарядов.
             self.aliens.empty()
@@ -136,6 +137,11 @@ class AlienInvasion:
         # Удаление снарядов и пришельцев, участвующих в коллизиях.
         collisions = pygame.sprite.groupcollide(self.bullets, 
                 self.aliens, True, True)
+        
+        if collisions:
+            for aliens in collisions.values():
+                self.stats.score += self.settings.alien_points * len(aliens)
+            self.sb.prep_score()
         
         if not self.aliens:
             # Уничтожение существующих снарядов и создание нового флота.
