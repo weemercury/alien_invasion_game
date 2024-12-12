@@ -81,6 +81,7 @@ class AlienInvasion:
             self.stats.reset_stats()
             self.stats.game_active = True
             self.sb.prep_score()
+            self.sb.prep_level()
             
             # Очистка списков пришельцев и снарядов.
             self.aliens.empty()
@@ -149,6 +150,10 @@ class AlienInvasion:
             self.bullets.empty()
             self._create_fleet()
             self.settings.increase_speed()
+            
+            # Увеличение уровня
+            self.stats.level += 1
+            self.sb.prep_level()
         
     def _update_aliens(self):
         """
@@ -223,7 +228,7 @@ class AlienInvasion:
         alien_width, alien_height = alien.rect.size
         alien.x = alien_width + 2 * alien_width * alien_number
         alien.rect.x = alien.x
-        alien.y = 2 * alien_height + 2 * alien_height * row_number
+        alien.y = 3 * alien_height + 2 * alien_height * row_number
         alien.rect.y = alien.y
         self.aliens.add(alien)
         

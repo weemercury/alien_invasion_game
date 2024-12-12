@@ -17,6 +17,7 @@ class Scoreboard():
         # Подготовка изображений счетов.
         self.prep_score()
         self.prep_high_score()
+        self.prep_level()
         
     def check_high_score(self):
         """Проверяет, появился ли новый рекорд."""
@@ -48,6 +49,18 @@ class Scoreboard():
         self.high_score_rect.top = self.high_score_rect.top + 20
         
     def show_score(self):
-        """Вывод счет на экран."""
+        """Выводит текущий счет, рекорд и число оставшихся кораблей."""
         self.screen.blit(self.score_image, self.score_rect)
         self.screen.blit(self.high_score_image, self.high_score_rect)
+        self.screen.blit(self.level_image, self.level_rect)
+        
+    def prep_level(self):
+        """Преобразует уровень в графическое изображение."""
+        level_str = str(self.stats.level)
+        self.level_image = self.font.render(level_str, True, 
+                self.text_color, self.settings.bg_color)
+        
+        # Уровень находится под текущим счетом
+        self.level_rect = self.level_image.get_rect()
+        self.level_rect.right = self.score_rect.right
+        self.level_rect.top = self.score_rect.bottom + 10
