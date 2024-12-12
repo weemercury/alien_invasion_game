@@ -11,16 +11,16 @@ class Settings():
         self.bg_color = (154, 170, 198)
         
         # Настройки корабля
-        self.ship_limit = 0
+        self.ship_limit = 3
         
         # Параметры снарядов
-        self.bullet_width = 300
+        self.bullet_width = 3
         self.bullet_height = 15
         self.bullet_color = (0, 0, 0)
         self.bullets_allowed = 3
         
         # Настройки пришельцев.
-        self.fleet_drop_speed = 100
+        self.fleet_drop_speed = 10
         
         # Темп ускорения игры
         self.speedup_scale = 1.1
